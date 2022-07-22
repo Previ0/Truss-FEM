@@ -1,12 +1,15 @@
 #include <iostream>
-#include "geom/Point.h"
+#include "geom/point.h"
+#include "ui/cli.h"
+#include "ui/parser.h"
 // https://www.linkedin.com/pulse/what-general-c-project-structure-like-herbert-elwood-gilliland-iii
 // https://google.github.io/styleguide/cppguide.html
 
 int main() {
-	Point siema(2.0f, 3.0f);
+	CLI* cli = CLI::getInstance();
+	Parser* parser = Parser::GetInstance();
+	//cli->Command("AddElement");
 
-	siema.print();
 
 	return 0;
 }

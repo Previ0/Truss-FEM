@@ -147,13 +147,15 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="src\ui\CLI.cpp" />
-    <ClCompile Include="src\geom\Point.cpp" />
-    <ClCompile Include="src\Main.cpp" />
+    <ClCompile Include="src\ui\parser.cpp" />
+    <ClCompile Include="src\ui\cli.cpp" />
+    <ClCompile Include="src\geom\point.cpp" />
+    <ClCompile Include="src\main.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="src\ui\CLI.h" />
-    <ClInclude Include="src\geom\Point.h" />
+    <ClInclude Include="src\ui\parser.h" />
+    <ClInclude Include="src\ui\cli.h" />
+    <ClInclude Include="src\geom\point.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
