@@ -1,6 +1,8 @@
 #ifndef CLI_H
 #define CLI_H
 
+#include "parser.h"
+
 //singleton
 
 class CLI

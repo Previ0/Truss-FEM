@@ -1,22 +1,26 @@
 #ifndef PARSER_H
 #define PARSER_H
 
+#include <vector>
+
 //Singleton
-//
-//enum TokenType{
-//
-//};
-//
-//struct Token {
-//	TokenType type;
-//	std::string data;
-//};
+
+
+
+enum TokenType{
+
+};
+
+struct Token {
+	TokenType type;
+	std::string data;
+};
 
 class Parser
 {
 private:
 	static Parser* instance_;
-	//std::vector<Token*> tokens_;
+	std::vector<Token*> tokens_;
 
 private:
 	Parser();

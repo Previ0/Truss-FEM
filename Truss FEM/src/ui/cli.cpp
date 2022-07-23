@@ -1,8 +1,6 @@
 #include <string>
 #include <iostream>
 
-#include "parser.h"
-
 #include "cli.h"
 
 CLI* CLI::instance_ = nullptr;
@@ -19,6 +17,7 @@ CLI* CLI::getInstance() {
 }
 
 void CLI::Command(std::string &command) {
+
 	std::cout << "[ " << command << " ] - " << "command has been executed." << std::endl;
 }
 
