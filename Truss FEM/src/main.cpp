@@ -7,8 +7,8 @@
 
 int main() {
 	CLI* cli = CLI::getInstance();
-	Parser* parser = Parser::GetInstance();
-	//cli->Command("AddElement");
+	std::string add = "AddElement sadfasd asdffff ffdfd";
+	cli->Command(add);
 
 
 	return 0;

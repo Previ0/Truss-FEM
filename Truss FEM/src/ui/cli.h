@@ -9,8 +9,10 @@ class CLI
 {
 private:
 	static CLI* instance_;
+	static Parser* parser_;
 private:
 	CLI();
+	void Execute(std::vector<Parser::Token>& tokens);
 
 public:
 	CLI(CLI& other) = delete; //not clonable
