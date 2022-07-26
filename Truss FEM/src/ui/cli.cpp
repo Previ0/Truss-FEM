@@ -1,5 +1,6 @@
 #include <string>
 #include <iostream>
+#include "../cmds/add_element.h"
 
 #include "cli.h"
 
@@ -9,9 +10,9 @@ Parser* CLI::parser_ = Parser::GetInstance();
 CLI::CLI() {
 }
 
-void CLI::Execute(std::vector<Parser::Token>& tokens) {
-	//To-do
-	tokens.clear();
+inline void CLI::Execute() {
+	command_->Execute();
+	delete command_;
 }
 
 CLI* CLI::getInstance() {
@@ -22,10 +23,20 @@ CLI* CLI::getInstance() {
 	return instance_;
 }
 
-void CLI::Command(std::string &command) {
+void CLI::SetCommand(std::string& command) {
+	command_ = CreateCommand(parser_->Parse(command));
+	std::cout << "[ " << command << " ] - " << "command has been created." << std::endl;
+}
 
-	Execute(parser_->Parse(command));
-	std::cout << "[ " << command << " ] - " << "command has been executed." << std::endl;
+Command* CLI::CreateCommand(std::vector<Parser::Token>& tokens) {
+	Command* temp = nullptr;
+	std::string command_name = tokens[0].data;
+
+	for (std::string c : Command::getCommandList())
+	if (command_name == c) temp = new Command::getCommandObj(command_name);
+	// ...
+
+	return temp;
 }
 
 //void CLI::Command(std::string command) {

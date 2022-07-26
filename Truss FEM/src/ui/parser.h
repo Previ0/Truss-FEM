@@ -2,6 +2,7 @@
 #define PARSER_H
 
 #include <vector>
+#include <string>
 
 //Singleton
 
@@ -9,12 +10,11 @@ class Parser
 {
 public:
 	enum TokenType {
-		NONE, NEXT, LAST
+		COMMAND_NAME, STR_VALUE, NUMERIC_VALUE, OPTION
 	};
 
 	struct Token
 	{
-	public:
 		TokenType type;
 		std::string data;
 	};
@@ -22,27 +22,28 @@ public:
 private:
 	class Tokenizer {
 	private:
-		std::vector<Token> tokens_;
+		
 	public:
 		Tokenizer();
 		void extractTokens(std::string& command);
-		std::vector<Token>& getTokens();
-		// Utils
-		inline void PrintTokens();
 	};
 
 	static Parser* instance_;
 	static Tokenizer* tokenizer_;
+	static std::vector<Token> tokens_;
 
 private:
 	Parser();
+	bool AreTokensCorrect();
 
 public:
 	Parser(Parser& other) = delete;
 	void operator=(Parser&) = delete;
 	static Parser* GetInstance();
 	std::vector<Token>& Parse(std::string& command);
-
+	std::vector<Token> getTokens();
+	//utils
+	inline void PrintTokens();
 
 };
 

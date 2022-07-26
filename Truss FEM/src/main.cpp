@@ -7,8 +7,8 @@
 
 int main() {
 	CLI* cli = CLI::getInstance();
-	std::string add = "AddElement sadfasd asdffff ffdfd";
-	cli->Command(add);
+	std::string add = "AddElement  sadfasd asdffff ffdfd";
+	cli->Execute();
 
 
 	return 0;
