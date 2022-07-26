@@ -6,11 +6,12 @@
 
 //Singleton
 
+
 class Parser
 {
 public:
 	enum TokenType {
-		COMMAND_NAME, STR_VALUE, NUMERIC_VALUE, OPTION
+		COMMAND_NAME, STR_VALUE, NUM_VALUE, FLOAT_VALUE, OPTION
 	};
 
 	struct Token

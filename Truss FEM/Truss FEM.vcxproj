@@ -147,18 +147,21 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="src\cmds\add_element.cpp" />
-    <ClCompile Include="src\cmds\command.cpp" />
-    <ClCompile Include="src\ui\parser.cpp" />
-    <ClCompile Include="src\ui\cli.cpp" />
+    <ClCompile Include="src\delete_element.cpp" />
+    <ClCompile Include="src\add_element.cpp" />
+    <ClCompile Include="src\command.cpp" />
+    <ClCompile Include="src\parser.cpp" />
+    <ClCompile Include="src\cli.cpp" />
     <ClCompile Include="src\geom\point.cpp" />
     <ClCompile Include="src\main.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="src\cmds\add_element.h" />
-    <ClInclude Include="src\cmds\command.h" />
-    <ClInclude Include="src\ui\parser.h" />
-    <ClInclude Include="src\ui\cli.h" />
+    <ClInclude Include="src\command_list.h" />
+    <ClInclude Include="src\delete_element.h" />
+    <ClInclude Include="src\add_element.h" />
+    <ClInclude Include="src\command.h" />
+    <ClInclude Include="src\parser.h" />
+    <ClInclude Include="src\cli.h" />
     <ClInclude Include="src\geom\point.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

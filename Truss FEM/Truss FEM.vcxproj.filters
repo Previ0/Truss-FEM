@@ -21,16 +21,19 @@
     <ClCompile Include="src\geom\point.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\ui\cli.cpp">
+    <ClCompile Include="src\cli.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\ui\parser.cpp">
+    <ClCompile Include="src\parser.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\cmds\command.cpp">
+    <ClCompile Include="src\command.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\cmds\add_element.cpp">
+    <ClCompile Include="src\add_element.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\delete_element.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -38,16 +41,22 @@
     <ClInclude Include="src\geom\point.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\ui\cli.h">
+    <ClInclude Include="src\cli.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\ui\parser.h">
+    <ClInclude Include="src\parser.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\cmds\command.h">
+    <ClInclude Include="src\command.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\cmds\add_element.h">
+    <ClInclude Include="src\add_element.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\delete_element.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\command_list.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
