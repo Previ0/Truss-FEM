@@ -18,45 +18,36 @@
     <ClCompile Include="src\main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\geom\point.cpp">
+    <ClCompile Include="src\solution.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\cli.cpp">
+    <ClCompile Include="src\geom\vertex.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\parser.cpp">
+    <ClCompile Include="src\geom\element.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\cui.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="src\command.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\add_element.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\delete_element.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="src\geom\point.h">
+    <ClInclude Include="src\solution.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\cli.h">
+    <ClInclude Include="src\geom\vertex.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\parser.h">
+    <ClInclude Include="src\geom\element.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\cui.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\command.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\add_element.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\delete_element.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\command_list.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

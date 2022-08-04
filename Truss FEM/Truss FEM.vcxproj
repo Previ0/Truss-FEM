@@ -147,22 +147,19 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="src\delete_element.cpp" />
-    <ClCompile Include="src\add_element.cpp" />
     <ClCompile Include="src\command.cpp" />
-    <ClCompile Include="src\parser.cpp" />
-    <ClCompile Include="src\cli.cpp" />
-    <ClCompile Include="src\geom\point.cpp" />
+    <ClCompile Include="src\cui.cpp" />
+    <ClCompile Include="src\geom\element.cpp" />
+    <ClCompile Include="src\geom\vertex.cpp" />
+    <ClCompile Include="src\solution.cpp" />
     <ClCompile Include="src\main.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="src\command_list.h" />
-    <ClInclude Include="src\delete_element.h" />
-    <ClInclude Include="src\add_element.h" />
     <ClInclude Include="src\command.h" />
-    <ClInclude Include="src\parser.h" />
-    <ClInclude Include="src\cli.h" />
-    <ClInclude Include="src\geom\point.h" />
+    <ClInclude Include="src\cui.h" />
+    <ClInclude Include="src\geom\element.h" />
+    <ClInclude Include="src\geom\vertex.h" />
+    <ClInclude Include="src\solution.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
