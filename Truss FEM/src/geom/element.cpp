@@ -29,5 +29,5 @@ Element::Element(float i_x, float i_y, float j_x, float j_y) :
 
 void Element::Print()
 {
-	std::cout <<"id: " << id << ", i(" << i.X << ", " << i.Y << "), j(" << j.X << ", " << j.Y << ")" << std::endl;
+	std::cout <<"id: " << id << "\ti = (" << i.X << ", " << i.Y << ")\tj = (" << j.X << ", " << j.Y << ")" << std::endl;
 }

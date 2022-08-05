@@ -16,7 +16,8 @@ public:
 	void PrintElements();
 
 	// TESTING METHODS
-	void add_element(float i_x, float i_y, float j_x, float j_y);
+	void AddElement();
+	void AddElement(float i_x, float i_y, float j_x, float j_y);
 	
 
 };

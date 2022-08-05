@@ -153,6 +153,7 @@
     <ClCompile Include="src\geom\vertex.cpp" />
     <ClCompile Include="src\solution.cpp" />
     <ClCompile Include="src\main.cpp" />
+    <ClCompile Include="src\utils\utility_functions.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\command.h" />
@@ -160,6 +161,7 @@
     <ClInclude Include="src\geom\element.h" />
     <ClInclude Include="src\geom\vertex.h" />
     <ClInclude Include="src\solution.h" />
+    <ClInclude Include="src\utils\utility_functions.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

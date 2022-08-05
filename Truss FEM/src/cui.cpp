@@ -27,6 +27,7 @@ CUI::CUI(std::vector<Solution> &solution_list) :
 
 CUI* CUI::GetInstance(std::vector<Solution> &solution_list)
 {
+	// Creating instance of CUI - singleton
 	if (instance_ == nullptr) {
 		instance_ = new CUI(solution_list);
 	}

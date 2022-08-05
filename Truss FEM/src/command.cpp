@@ -5,7 +5,8 @@
 // CommandMap
 Command::CommandMap::CommandMap() {
 	this->operator[] ("exit") = EXIT;	
-	this->operator[] ("add") = EXIT;	
+	this->operator[] ("prts") = PRINT_SOLUTION;	
+	this->operator[] ("addel") = ADD_ELEMENT;	
 }
 
 Command::CommandMap::~CommandMap() {}
@@ -23,17 +24,30 @@ void Command::setType(const std::string& command) {
 
 
 int Command::Execute() {
+
+	// Selecting what action to take
 	switch (this->type_)
 	{
 	case EXIT:
+		return 0; //must be 0
+
+	case PRINT_SOLUTION:
+		solution_->PrintElements();
 		break;
-	case ADD_ELEMENT: break;
-	case DELETE_ELEMENT_BY_ID: break;
+
+	case ADD_ELEMENT:
+		solution_->AddElement();
+		break;
+
+	case DELETE_ELEMENT_BY_ID:
+		break;
 
 	default: 
 		std::cout << "Improper command" << std::endl;
-		break;
+		return DEFAULT;
 	}
+
+	return this->type_;
 }
 
 // Initializing command map
