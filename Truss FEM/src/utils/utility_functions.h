@@ -4,7 +4,7 @@
 #include <iostream>
 #include <string>
 
-namespace Utils
+namespace utils
 {
 	template <typename T>
 	inline T PromptedInput(std::string prompt_message);
@@ -14,23 +14,27 @@ namespace Utils
 }
 
 template<>
-inline float Utils::PromptedInput<float>(std::string prompt_message) {
+inline float utils::PromptedInput<float>(std::string prompt_message) {
+	using namespace std;
+	
 	float value;
-	std::cout << prompt_message;
-	std::cin >> value;
-	std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
-	std::cin.clear();
-
+	cout << prompt_message;
+	cin >> value;
+	cin.ignore(numeric_limits<streamsize>::max(), '\n');
+	cin.clear();
 	return value;
 }
 
+// Returns 
 template<>
-inline std::string Utils::PromptedInput<std::string>(std::string prompt_message) {
-	std::string value;
-	std::cout << prompt_message;
-	std::getline(std::cin, value);
+inline std::string utils::PromptedInput<std::string>(std::string prompt_message) {
+	using namespace std;
+
+	string value;
+	cout << prompt_message;
+	getline(cin, value);
 	//std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
-	std::cin.clear();
+	cin.clear();
 	
 	return value;
 }

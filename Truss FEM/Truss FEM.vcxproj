@@ -150,6 +150,7 @@
     <ClCompile Include="src\command.cpp" />
     <ClCompile Include="src\cui.cpp" />
     <ClCompile Include="src\geom\element.cpp" />
+    <ClCompile Include="src\geom\math_functions.cpp" />
     <ClCompile Include="src\geom\vertex.cpp" />
     <ClCompile Include="src\solution.cpp" />
     <ClCompile Include="src\main.cpp" />
@@ -159,6 +160,7 @@
     <ClInclude Include="src\command.h" />
     <ClInclude Include="src\cui.h" />
     <ClInclude Include="src\geom\element.h" />
+    <ClInclude Include="src\geom\math_functions.h" />
     <ClInclude Include="src\geom\vertex.h" />
     <ClInclude Include="src\solution.h" />
     <ClInclude Include="src\utils\utility_functions.h" />

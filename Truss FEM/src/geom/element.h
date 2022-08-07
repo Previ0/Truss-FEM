@@ -17,6 +17,8 @@ public:
 	Element(float i_x, float i_y, float j_x, float j_y);
 
 	void Print();
+
+	bool operator== (const Element& other);
 };
 
 #endif // !ELEMENT_H

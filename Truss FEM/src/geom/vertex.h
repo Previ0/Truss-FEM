@@ -17,6 +17,8 @@ public:
 	//Constructors
 	Vertex();
 	Vertex(float x, float y);
+
+	bool operator== (const Vertex& other) const;
 };
 
 #endif // !VERTEX_H

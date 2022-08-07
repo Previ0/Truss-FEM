@@ -1,23 +1,26 @@
 #include <iostream>
 
 #include "solution.h"
+#include "geom/math_functions.h"
 #include "cui.h"
 #include "utils/utility_functions.h"
 
 // It's a program for calculating static mechanics of 2d Truss structures.
 
 int main() {
-	std::vector<Solution> solution_list;
+	using namespace std;
+
+	vector<Solution> solution_list;
 	CUI* cui = CUI::GetInstance(solution_list);
-	std::string command = "";
+	string command = "";
 
 	// Welcome message
-	std::cout << "Truss - FEM" << std::endl;
-	std::cout << std::endl;
+	cout << "Truss - FEM" << endl;
+	cout << endl;
 
 	// Passing commands until "exit" value
 	do{
-		command = Utils::PromptedInput<std::string>("Command: ");
+		command = utils::PromptedInput<string>("Command: ");
 	} while (cui->NextCommand(command));
 	
 	return 0;

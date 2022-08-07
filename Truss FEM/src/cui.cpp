@@ -9,20 +9,20 @@ CUI* CUI::instance_{ nullptr };
 
 CUI::CUI() :
 	solution_list_ptr_{ nullptr },
-	current_{ nullptr }
+	current_solution_{ nullptr }
 {
 
 }
 
 CUI::CUI(std::vector<Solution> &solution_list) :
 	solution_list_ptr_{ &solution_list },
-	current_{ nullptr }
+	current_solution_{ nullptr }
 {
 	// Creating Empty solution
 	if (solution_list_ptr_->size() == 0) {
 		solution_list_ptr_->push_back(Solution());
 	}
-	current_ = &solution_list[0];
+	current_solution_ = &solution_list[0];
 }
 
 CUI* CUI::GetInstance(std::vector<Solution> &solution_list)
@@ -35,7 +35,7 @@ CUI* CUI::GetInstance(std::vector<Solution> &solution_list)
 }
 
 int CUI::NextCommand(const std::string& command) {
-	// TO-DO - Parser, that's why Command is an object
-	Command temp{current_ ,command};
+	// TO-DO - Parser, that's why Command is an object	
+	Command temp = Command(current_solution_ ,command);
 	return temp.Execute();
 }

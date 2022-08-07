@@ -31,3 +31,9 @@ void Element::Print()
 {
 	std::cout <<"id: " << id << "\ti = (" << i.X << ", " << i.Y << ")\tj = (" << j.X << ", " << j.Y << ")" << std::endl;
 }
+
+bool Element::operator== (const Element& other) {
+	// Comparing vertices position of elements
+	if (this->i == other.i && this->j == other.j) return true;
+	else return false;
+}

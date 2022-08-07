@@ -1,4 +1,5 @@
 #include "vertex.h"
+#include "math_functions.h"
 
 // Point
 Point::Point(float x, float y) :
@@ -24,4 +25,13 @@ Vertex::Vertex(float x, float y) :
 	y_blocked_{ false }
 {
 
+}
+
+bool Vertex::operator== (const Vertex& other) const {
+	if (math::AreFloatsEqual(this->X, other.X) &&
+		math::AreFloatsEqual(this->Y, other.Y))
+	{
+		return true;
+	}
+	else return false;
 }
