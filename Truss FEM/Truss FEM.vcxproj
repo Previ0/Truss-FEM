@@ -96,6 +96,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
+      <LanguageStandard>stdcpp17</LanguageStandard>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -110,6 +111,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
+      <LanguageStandard>stdcpp17</LanguageStandard>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -124,6 +126,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
+      <LanguageStandard>stdcpp17</LanguageStandard>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -138,6 +141,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
+      <LanguageStandard>stdcpp17</LanguageStandard>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -147,23 +151,15 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="src\command.cpp" />
-    <ClCompile Include="src\cui.cpp" />
-    <ClCompile Include="src\geom\element.cpp" />
-    <ClCompile Include="src\geom\math_functions.cpp" />
-    <ClCompile Include="src\geom\vertex.cpp" />
-    <ClCompile Include="src\solution.cpp" />
+    <ClCompile Include="src\cmd_base.cpp" />
+    <ClCompile Include="src\cmd_user_interface.cpp" />
+    <ClCompile Include="src\parser.cpp" />
     <ClCompile Include="src\main.cpp" />
-    <ClCompile Include="src\utils\utility_functions.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="src\command.h" />
-    <ClInclude Include="src\cui.h" />
-    <ClInclude Include="src\geom\element.h" />
-    <ClInclude Include="src\geom\math_functions.h" />
-    <ClInclude Include="src\geom\vertex.h" />
-    <ClInclude Include="src\solution.h" />
-    <ClInclude Include="src\utils\utility_functions.h" />
+    <ClInclude Include="src\cmd_base.h" />
+    <ClInclude Include="src\cmd_user_interface.h" />
+    <ClInclude Include="src\parser.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

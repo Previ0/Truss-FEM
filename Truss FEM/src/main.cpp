@@ -1,27 +1,33 @@
 #include <iostream>
+#include <unordered_map>
+#include <string>
+#include "cmd_user_interface.h"
+#include "parser.h"
 
-#include "solution.h"
-#include "geom/math_functions.h"
-#include "cui.h"
-#include "utils/utility_functions.h"
-
-// It's a program for calculating static mechanics of 2d Truss structures.
+void Print(std::string_view siema) {
+	std::cout << siema << std::endl;
+}
 
 int main() {
-	using namespace std;
 
-	vector<Solution> solution_list;
-	CUI* cui = CUI::GetInstance(solution_list);
-	string command = "";
+	//const CmdUserInterface& cui = CmdUserInterface::GetInstance();
+	//cui.NextCommand("");
+	//cui.NextCommand("print");
+	//cui.AddCommand(new CmdPrinter());
+	//std::string siema{ "print" };
+	//cui.NextCommand(siema);
+	//cui.NextCommand();
+	//cui.PrintCmdMap();
+	//Parser parser;
+	//std::string siema = "prints";
+	//parser.NextCommand(siema);
 
-	// Welcome message
-	cout << "Truss - FEM" << endl;
-	cout << endl;
 
-	// Passing commands until "exit" value
-	do{
-		command = utils::PromptedInput<string>("Command: ");
-	} while (cui->NextCommand(command));
-	
+	Lexer lexer_;
+
+	lexer_.Parse("add -element \"asdasa22sddas\" .1234 10.23 123d 9.1s323 1 2 3 4");
+
+
+	getchar();
 	return 0;
 }
