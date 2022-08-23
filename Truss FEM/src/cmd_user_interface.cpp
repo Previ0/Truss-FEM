@@ -1,8 +1,11 @@
 #include <iostream>
+#include <queue>
 
 #include "cmd_user_interface.h"
 
-std::unordered_map<std::string,const CmdBase*> CmdUserInterface::command_map_ = {};
+std::unordered_map<std::string,CmdBase*> CmdUserInterface::command_map_ = {};
+Lexer CmdUserInterface::lexer_;
+
 
 CmdUserInterface::CmdUserInterface() {
 	std::cout << "[ CmdUserInterface ] initialized." << std::endl;
@@ -12,7 +15,7 @@ CmdUserInterface::CmdUserInterface() {
 
 }
 
-void CmdUserInterface::AddCommand(const CmdBase* command_obj) const {
+void CmdUserInterface::AddCommand(CmdBase* command_obj) const {
 	if (command_map_.find(command_obj->GetCaller()) == command_map_.end()) {
 	command_map_[command_obj->GetCaller()] = command_obj;
 	}
@@ -22,11 +25,16 @@ void CmdUserInterface::AddCommand(const CmdBase* command_obj) const {
 }
 
 void CmdUserInterface::NextCommand(const char* command) const {
-	command_map_[command]->Execute();
+	for (auto token : lexer_.Parse(command)) {
+		if (token.type == TokenType::COMMAND)
+			command_map_[token.text]->Execute();
+	}
+	
 }
 
 void CmdUserInterface::NextCommand(const std::string& command) const {
-	command_map_[command]->Execute();
+	lexer_.Parse(command);
+	//command_map_[command]->Execute();
 }
 
 const CmdUserInterface& CmdUserInterface::GetInstance() {
@@ -34,6 +42,10 @@ const CmdUserInterface& CmdUserInterface::GetInstance() {
 	return instance_;
 }
 
+
+bool CmdUserInterface::isCommand(const std::string& command_name) {
+	return command_map_.count(command_name) > 0;
+}
 
 
 CmdUserInterface::~CmdUserInterface() {

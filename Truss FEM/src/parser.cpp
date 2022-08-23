@@ -1,17 +1,19 @@
 #include <iostream>
+#include "cmd_user_interface.h"
+
 
 #include "parser.h"
 
 // TOKEN
 
 std::map<TokenType, const char*> Token::token_type_map = {
-	{TokenType::WHITESPACE,		"WHITESPACE"},
-	{TokenType::COMMAND,		"COMMAND"},
-	{TokenType::STRING_LITERAL, "STRING_LITERAL"},
-	{TokenType::ARGUMENT,		"ARGUMENT"},
-	{TokenType::OPTION,			"OPTION"},
-	{TokenType::INTEGER,		"INTEGER"},
-	{TokenType::FLOATING_POINT, "FLOATING_POINT"},
+	{TokenType::WHITESPACE,		"WHITESPACE"		},
+	{TokenType::COMMAND,		"COMMAND"			},
+	{TokenType::STRING_LITERAL, "STRING_LITERAL"	},
+	{TokenType::ARGUMENT,		"ARGUMENT"			},
+	{TokenType::OPTION,			"OPTION"			},
+	{TokenType::INTEGER,		"INTEGER"			},
+	{TokenType::FLOATING_POINT, "FLOATING_POINT"	},
 
 };
 
@@ -25,7 +27,7 @@ Lexer::Lexer() {
 
 }
 
-void Lexer::Parse(std::string_view data) {
+const std::vector<Token>& Lexer::Parse(std::string_view data) {
 	std::cout << "Parsing started..." << std::endl;
 	Token temp;
 
@@ -74,8 +76,12 @@ void Lexer::Parse(std::string_view data) {
 		case '\n':
 		case '\v':
 		case '\f':
-			if (temp.type != TokenType::WHITESPACE)
+			if (temp.type != TokenType::WHITESPACE) {
+				if (CmdUserInterface::isCommand(temp.text))
+					temp.type = TokenType::COMMAND;
 				pushToken(temp);
+
+			}
 			break;
 
 		default: 
@@ -92,6 +98,16 @@ void Lexer::Parse(std::string_view data) {
 	pushToken(temp);
 	
 	PrintTokens();
+	return tokens_;
+}
+
+ bool Lexer::isCommand(Token& token) {
+	if (token.type == TokenType::ARGUMENT &&
+		CmdUserInterface::isCommand(token.text))
+	{
+		return true;
+	}
+	return false;
 }
 
 void Lexer::pushToken(Token& token) {

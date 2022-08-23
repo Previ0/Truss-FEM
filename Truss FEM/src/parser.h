@@ -4,7 +4,9 @@
 #include <string_view>
 #include <string>
 #include <vector>
+#include <unordered_map>
 #include <map>
+
 
 
 
@@ -27,16 +29,18 @@ struct Token {
 };
 
 class Lexer {
-public: //Methods
+public:
 	Lexer();
-	void Parse(std::string_view data);
+	const std::vector<Token>& Parse(std::string_view data);
 
-private: //Methods
+private:
+	static bool isCommand(Token& token);
+
 	void pushToken(Token& temp);
 
 	void PrintTokens() const;
 
-private: //Members
+private:
 	const std::string_view input_string_;
 	std::vector<Token> tokens_;
 };
