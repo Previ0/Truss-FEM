@@ -6,14 +6,15 @@
 int main() {
 
 	const CmdUserInterface& cui = CmdUserInterface::GetInstance();
+
+	//In place tests
 	cui.NextCommand("");
 	cui.NextCommand("print -element \"asdasa22sddas\" .1234 10.23 123d 9.1s323 1 2 3 4");
-	cui.AddCommand(new CmdPrinter());
+	CmdCreator::AddCommand(new CmdPrinter());
 	std::string siema{ "print" };
 	cui.NextCommand(siema);
 	cui.NextCommand();
-	cui.PrintCmdMap();
-
+	CmdCreator::PrintCmdMap();
 
 	getchar();
 	return 0;

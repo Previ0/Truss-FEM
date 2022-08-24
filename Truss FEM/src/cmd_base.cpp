@@ -1,6 +1,7 @@
 #include <iostream>
 
 #include "cmd_base.h"
+#include "debug_macros.h"
 
 CmdBase::CmdBase(const char* caller) : caller_{ caller } {
 
@@ -14,7 +15,7 @@ CmdBase::~CmdBase() {
 	std::cout << "CmdBase has been destroyed." << std::endl;
 }
 
-std::string CmdBase::GetCommandName() const {
+const char* CmdBase::GetCommandName() const {
 	return typeid(*this).name();
 }
 
@@ -24,7 +25,7 @@ CmdNoAction::CmdNoAction() : CmdBase("") {
 }
 
 void CmdNoAction::Execute() const {
-	std::cout << "Command [CmdNoAction] has been invoked" << std::endl;
+	DEBUG_MESSAGE(<caller_>, "Executed");
 }
 
 CmdNoAction::~CmdNoAction() {
@@ -32,13 +33,12 @@ CmdNoAction::~CmdNoAction() {
 }
 
 //CmdPrinter
-
 CmdPrinter::CmdPrinter() : CmdBase("print") {
 	
 }
 
 void CmdPrinter::Execute() const {
-	std::cout << "Command [CmdPrint] has been invoked" << std::endl;
+	DEBUG_MESSAGE(<caller_>, "Executed");
 }
 
 CmdPrinter::~CmdPrinter() {

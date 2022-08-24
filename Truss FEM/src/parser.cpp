@@ -1,34 +1,34 @@
 #include <iostream>
+
 #include "cmd_user_interface.h"
-
-
 #include "parser.h"
+#include "debug_macros.h"
 
 // TOKEN
-
-std::map<TokenType, const char*> Token::token_type_map = {
-	{TokenType::WHITESPACE,		"WHITESPACE"		},
-	{TokenType::COMMAND,		"COMMAND"			},
-	{TokenType::STRING_LITERAL, "STRING_LITERAL"	},
-	{TokenType::ARGUMENT,		"ARGUMENT"			},
-	{TokenType::OPTION,			"OPTION"			},
-	{TokenType::INTEGER,		"INTEGER"			},
-	{TokenType::FLOATING_POINT, "FLOATING_POINT"	},
+const std::map<TokenType, const char*> Token::token_type_map = {
+	{TokenType::kWhitespace,	"WHITESPACE"		},
+	{TokenType::kCommand,		"COMMAND"			},
+	{TokenType::kStringLiteral, "STRING_LITERAL"	},
+	{TokenType::kArgument,		"ARGUMENT"			},
+	{TokenType::kOption,		"OPTION"			},
+	{TokenType::kInteger,		"INTEGER"			},
+	{TokenType::kFloatingPoint, "FLOATING_POINT"	},
 
 };
 
 const char* Token::getTokenTypeString(TokenType type) {
-	return token_type_map[type];
+	return token_type_map.at(type);
 }
 
 // Lexer
-
 Lexer::Lexer() {
-
+	DEBUG_MESSAGE(Lexer, "instantiated.");
 }
 
 const std::vector<Token>& Lexer::Parse(std::string_view data) {
-	std::cout << "Parsing started..." << std::endl;
+
+	DEBUG_MESSAGE(Lexer, "parsing has started");
+
 	Token temp;
 
 	for (auto ch : data) {
@@ -36,22 +36,22 @@ const std::vector<Token>& Lexer::Parse(std::string_view data) {
 		switch (ch)
 		{
 		case '.':
-			if (temp.type == TokenType::INTEGER || temp.type == TokenType::WHITESPACE) {
-				temp.type = TokenType::FLOATING_POINT;
+			if (temp.type == TokenType::kInteger || temp.type == TokenType::kWhitespace) {
+				temp.type = TokenType::kFloatingPoint;
 			}
 			temp.text.append(1, ch);
 			break;
 
 		case '-':
-			if (temp.type == TokenType::WHITESPACE) {
-				temp.type = TokenType::OPTION;
+			if (temp.type == TokenType::kWhitespace) {
+				temp.type = TokenType::kOption;
 			}
-			temp.text.append(1, ch);
+			//temp.text.append(1, ch);
 			break;
 
 		case '\"':
-			if (temp.type == TokenType::WHITESPACE) {
-				temp.type = TokenType::STRING_LITERAL;
+			if (temp.type == TokenType::kWhitespace) {
+				temp.type = TokenType::kStringLiteral;
 			}
 			break;
 
@@ -65,8 +65,8 @@ const std::vector<Token>& Lexer::Parse(std::string_view data) {
 		case '7':
 		case '8':
 		case '9':
-			if (temp.type == TokenType::WHITESPACE) {
-				temp.type = TokenType::INTEGER;
+			if (temp.type == TokenType::kWhitespace) {
+				temp.type = TokenType::kInteger;
 			}
 			temp.text.append(1, ch);
 			break;
@@ -76,20 +76,20 @@ const std::vector<Token>& Lexer::Parse(std::string_view data) {
 		case '\n':
 		case '\v':
 		case '\f':
-			if (temp.type != TokenType::WHITESPACE) {
-				if (CmdUserInterface::isCommand(temp.text))
-					temp.type = TokenType::COMMAND;
+			if (temp.type != TokenType::kWhitespace) {
+				if (CmdCreator::IsCommand(temp.text))
+					temp.type = TokenType::kCommand;
 				pushToken(temp);
 
 			}
 			break;
 
 		default: 
-			if (temp.type == TokenType::WHITESPACE) {
-				temp.type = TokenType::ARGUMENT;
+			if (temp.type == TokenType::kWhitespace) {
+				temp.type = TokenType::kArgument;
 			}
-			if (temp.type == TokenType::INTEGER || temp.type == TokenType::FLOATING_POINT) {
-				temp.type = TokenType::ARGUMENT;
+			if (temp.type == TokenType::kInteger || temp.type == TokenType::kFloatingPoint) {
+				temp.type = TokenType::kArgument;
 			}
 			temp.text.append(1, ch);
 			break;
@@ -102,8 +102,8 @@ const std::vector<Token>& Lexer::Parse(std::string_view data) {
 }
 
  bool Lexer::isCommand(Token& token) {
-	if (token.type == TokenType::ARGUMENT &&
-		CmdUserInterface::isCommand(token.text))
+	if (token.type == TokenType::kArgument&&
+		CmdCreator::IsCommand(token.text))
 	{
 		return true;
 	}
@@ -111,14 +111,12 @@ const std::vector<Token>& Lexer::Parse(std::string_view data) {
 }
 
 void Lexer::pushToken(Token& token) {
-	std::cout << "Token pushed" << std::endl;
-	if (token.type != TokenType::WHITESPACE) {
+	if (token.type != TokenType::kArgument) {
 		tokens_.push_back(token);
-		token.type = TokenType::WHITESPACE;
+		token.type = TokenType::kWhitespace;
 		token.text.erase();
 	}
 }
-
 
 void Lexer::PrintTokens() const {
 
